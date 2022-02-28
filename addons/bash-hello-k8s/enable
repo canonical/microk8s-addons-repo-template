@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Enabling bash-hello-k8s"
+$SNAP/microk8s-kubectl.wrapper create deploy bash-demo-nginx --image nginx
+echo "Enabled bash-hello-k8s"

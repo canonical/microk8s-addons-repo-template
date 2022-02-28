@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+# addons/python-hello-k8s/enable
+
+import os
+import subprocess
+
+import click
+
+KUBECTL = os.path.expandvars("$SNAP/microk8s-kubectl.wrapper")
+
+@click.command()
+@click.option("--replicas", required=False, default=3, type=int)
+def main(replicas):
+    click.echo("Enabling python-hello-k8s")
+    subprocess.check_call([
+        KUBECTL, "create", "deploy", "python-demo-nginx", "--image", "nginx", "--replicas", str(replicas),
+    ])
+    click.echo("Enabled python-hello-k8s")
+
+if __name__ == "__main__":
+    main()

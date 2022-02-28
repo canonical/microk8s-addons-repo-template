@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+# addons/python-demo-nginx/disable
+
+import click
+import os
+import subprocess
+
+KUBECTL = os.path.expandvars("$SNAP/microk8s-kubectl.wrapper")
+
+@click.command()
+def main():
+    click.echo("Disabling python-demo-nginx")
+    subprocess.check_call([
+        KUBECTL, "delete", "deploy", "python-demo-nginx"
+    ])
+    click.echo("Disabled python-demo-nginx")
+
+if __name__ == "__main__":
+    main()

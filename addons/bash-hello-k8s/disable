@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Disabling bash-hello-k8s"
+$SNAP/microk8s-kubectl.wrapper delete deploy bash-demo-nginx
+echo "Disabled bash-hello-k8s"

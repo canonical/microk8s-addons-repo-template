@@ -1,15 +1,10 @@
 import sh
 import yaml
 
-from utils import (
-    microk8s_enable,
-    wait_for_pod_state,
-    microk8s_disable,
-)
+from utils import microk8s_enable, wait_for_pod_state, microk8s_disable
 
 
 class TestAddons(object):
-
     def test_python_demo_nginx(self):
         microk8s_enable("python-hello-k8s")
         wait_for_pod_state("", "default", "running", label="app=python-demo-nginx")
